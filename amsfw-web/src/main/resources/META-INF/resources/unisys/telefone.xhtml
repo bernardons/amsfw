@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="telefone"/>
+	<cc:attribute name="label" default="#{componentes['telefone.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+	<cc:attribute name="validatorMessage" default="#{componentes['telefone.default.validator.message']}" />
+	<cc:attribute name="size" default="2" />
+	<cc:attribute name="inputSize" default="12" />
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+	<ui:param name="fakeRequired" value="#{cc.attrs.fakeRequired}" />	
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputText id="#{cc.attrs.identificador}"	required="#{cc.attrs.required}" value="#{cc.attrs.value}"
+				styleClass="m-wrap nonodigito span#{cc.attrs.inputSize}" requiredMessage="#{cc.attrs.requiredMessage}"
+				validatorMessage="#{cc.attrs.validatorMessage}"	readonly="#{readOnly}">
+			</p:inputText>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+	
+			 
+	<script type="text/javascript">
+	//<![CDATA[
+		$(document).ready(function() {							
+			var SPMaskBehavior = function (val) {
+				  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+			},
+			spOptions = {
+			  onKeyPress: function(val, e, field, options) {
+			      field.mask(SPMaskBehavior.apply({}, arguments), options);
+			    }
+			};
+
+			$('.nonodigito').mask(SPMaskBehavior, spOptions);
+
+		});				
+
+	//]]>
+	</script>
+	 
+	
+</cc:implementation>
+</html>

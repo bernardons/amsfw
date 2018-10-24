@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="id" default="picklist" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="itemLabel" required="true" />
+	<cc:attribute name="addLabel" default="Adicionar" />
+	<cc:attribute name="removeLabel" default="Remover" />
+	<cc:attribute name="labelListaPadrao" required="false" />
+	<cc:attribute name="labelListaSecundaria" required="false" />
+	<cc:attribute name="disabled" required="false" default="false" />
+	<cc:attribute name="listener" required="true" />
+	<cc:attribute name="bean" required="true" />
+	<cc.attribute name="desabilitado" default="false" />
+	<cc.attribute name="immediate" default="true" />
+</cc:interface>
+
+<cc:implementation>
+	<p:pickList id="#{cc.attrs.id}" value="#{cc.attrs.value}"
+		converter="br.unisys.EntityConverter" disabled="#{cc.attrs.disabled}"
+		var="atual" itemLabel="#{atual[cc.attrs.itemLabel]}" immediate="#{cc.attrs.immediate}"
+		removeLabel="#{cc.attrs.removeLabel}" itemDisabled="#{cc.attrs.desabilitado}"
+		itemValue="#{atual}" addLabel="#{cc.attrs.addLabel}"
+		addAllLabel="Adicionar Todos" removeAllLabel="Remover Todos" >
+		<f:facet name="sourceCaption">#{cc.attrs.labelListaPadrao}</f:facet>
+		<f:facet name="targetCaption">#{cc.attrs.labelListaSecundaria}</f:facet>
+
+		<p:ajax event="transfer"
+			listener="#{cc.attrs.bean[cc.attrs.listener]}"
+			update="@([id$=#{cc.attrs.id}])" />
+
+	</p:pickList>
+
+	<script type="text/javascript">
+			$(function () {
+				$(".ui-picklist").find("li.ui-state-disabled").parent().addClass("ui-picklist-list-state-disabled");
+			});
+	</script>
+	<br />
+</cc:implementation>
+</html>
