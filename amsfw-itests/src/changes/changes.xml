@@ -1,0 +1,20 @@
+<document>
+	<properties>
+		<title>Mudanças no Test-Utils</title>
+	</properties>
+	<body>
+		<release version="1.3.1" description="Latest release">
+			<action dev="Pedro Gontijo" type="add">
+				Pequena documentação no JavaDoc da AbstractIntegrationTest.
+			</action>
+			<action dev="Pedro Gontijo" type="fix">
+				Pequena correção nos logs.
+			</action>
+			<action dev="Pedro Gontijo" type="update">
+				Ordem da substituição das propriedades dos persistence units foi alterada
+				para que as propriedades vindas do itests-config.properties tenham prioridade sobre quaisquer definidas antes pelo
+				framework.
+			</action>
+		</release>
+	</body>
+</document>
