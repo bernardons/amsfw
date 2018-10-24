@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="intervaloData"/>
+
+	<cc:attribute name="label" default="#{componentes['intervaloData.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+</cc:interface>
+
+<cc:implementation>
+	<div class="span6 ">
+		<div class="control-group">
+			<h:outputLabel class="control-label" for="#{cc.attrs.identificador}">#{cc.attrs.label}</h:outputLabel>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-calendar"></i></span> 
+					<p:inputText id="#{cc.attrs.identificador}" name="#{cc.attrs.value}" styleClass="m-wrap m-ctrl-medium date-range" size="16" required="#{cc.attrs.required}" requiredMessage="#{cc.attrs.requiredMessage}" readonly="#{readOnly}" />
+					<p:message for="#{cc.attrs.identificador}" />
+				</div>
+			</div>
+		</div>
+	</div>
+</cc:implementation>
+</html>
