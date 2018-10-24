@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="visualizar" default="true" />
+	<cc:attribute name="alterar" default="true" />
+	<cc:attribute name="remover" default="true" />
+	<cc:attribute name="tituloAlterar" default="#{global.editar}" />
+</cc:interface>
+
+<cc:implementation>	
+	
+	<!-- Botao Visualizar -->
+	<p:commandLink immediate="true" action="#{controller['telaCadastro']}" rendered="#{request.isUserInRole(funcionalidade.concat('_consultar')) and cc.attrs.visualizar}">
+		<f:param name="id" value="#{objeto.id}"/>
+		<f:param name="readOnly" value="true" />
+		<h:graphicImage value="#{icones.visualizar}" title="#{global.visualizar}" style="height: 16px"/>
+	</p:commandLink>
+	<p:spacer width="7px" rendered="#{request.isUserInRole(funcionalidade.concat('_consultar')) and cc.attrs.visualizar}" />
+	
+	<!-- Botao Editar -->
+	<p:commandLink immediate="true" action="#{controller['telaCadastro']}" rendered="#{request.isUserInRole(funcionalidade.concat('_alterar')) and cc.attrs.alterar}" >
+		<f:param name="id" value="#{objeto.id}" />
+		<f:param name="readOnly" value="false" />
+		<h:graphicImage value="#{icones.editar}" title="#{cc.attrs.tituloAlterar}" />
+	</p:commandLink>
+	<p:spacer width="10px" rendered="#{request.isUserInRole(funcionalidade.concat('_alterar')) and cc.attrs.alterar}"  />
+	
+	<!-- Botao Remover -->
+	<p:commandLink onclick="dialogExcluir.show()" rel="modal" rendered="#{request.isUserInRole(funcionalidade.concat('_excluir')) and cc.attrs.remover}" >
+		<f:setPropertyActionListener
+				target="#{controller.objetoSelecionado}" value="#{objeto}" />
+		<h:graphicImage value="#{icones.excluir}" title="#{global.excluir}" />
+	</p:commandLink>	
+</cc:implementation>
+</html>
