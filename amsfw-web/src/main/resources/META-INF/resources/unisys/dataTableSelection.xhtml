@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="bean" required="true" />
+	<cc:attribute name="methodSelecionar" default="selecionar"/>
+	<cc:attribute name="objetoTarget" default="objetoSelecionado"/>
+	<cc:attribute name="methodDesmarcar" default="desmarcar"/>
+</cc:interface>
+
+<cc:implementation>
+
+	<p:commandLink id="selecionar" action="#{cc.attrs.bean[cc.attrs.methodSelecionar]}" rel="itensDataTableSelected"
+		oncomplete="ocultar(id, 'desmarcar')" onclick="addClassNegrito(this)">
+		<f:setPropertyActionListener
+			target="#{cc.attrs.bean[cc.attrs.objetoTarget]}"
+			value="#{objeto}" />
+		<h:graphicImage value="#{icones.check}" />
+	</p:commandLink>
+
+	<p:commandLink id="desmarcar" style="display: none" action="#{cc.attrs.bean[cc.attrs.methodDesmarcar]}" rel="itensDataTableNotSelected"
+		oncomplete="ocultar(id, 'selecionar')" onclick="removeClassNegrito(this)">
+		<f:setPropertyActionListener
+			target="#{cc.attrs.bean[cc.attrs.objetoTarget]}"
+			value="#{objeto}" />
+			<h:graphicImage value="#{icones['check.selected']}" />
+	</p:commandLink>
+
+</cc:implementation>
+</html>

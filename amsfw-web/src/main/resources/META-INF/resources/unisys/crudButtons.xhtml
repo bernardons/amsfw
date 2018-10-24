@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Botão novo -->
+	<p:commandLink id="cmdLinkNovo" styleClass="btn orange" value="#{global.novo}" actionListener="#{controller['novo']}" ajax="false" rendered="#{controller.objeto.id != null and request.isUserInRole(funcionalidade.concat('.alterar'))}" />
+	<p:spacer width="15px" rendered="#{controller.objeto.id != null and request.isUserInRole(funcionalidade.concat('.alterar'))}" />
+
+	<!-- Botão salvar ou editar -->
+	<p:commandLink id="cmdLinkSalvar" styleClass="btn green noCheck" value="#{global.salvar}" actionListener="#{controller['salvar']}" ajax="false" rendered="#{request.isUserInRole(funcionalidade.concat('.alterar')) and controller['editavel']}"  />
+	<p:commandLink id="cmdLinkEditar" styleClass="btn blue noCheck" value="#{global.editar}" actionListener="#{controller['editar']}" ajax="false" rendered="#{controller.objeto.id != null and request.isUserInRole(funcionalidade.concat('.alterar')) and controller['readOnly']}" />
+	<p:spacer width="15px" rendered="#{request.isUserInRole(funcionalidade.concat('.alterar'))}" />
+
+	<!-- Botão cancelar -->
+	<p:commandLink styleClass="btn" value="#{global.cancelar}" action="#{controller['telaPesquisa'].concat('?faces-redirect=true')}" immediate="true" />
+	<p:spacer width="15px" />
+
+	<!-- Botão remover -->
+	<p:commandLink id="cmdLinkRemover" styleClass="btn red noCheck" value="#{global.remover}" actionListener="#{controller['remover']}" rendered="#{controller.objeto.id != null and request.isUserInRole(funcionalidade.concat('.remover'))}" />
+
+</cc:implementation>
+</html>

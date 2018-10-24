@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="telefone"/>
+
+	<cc:attribute name="label" default="#{componentes['telefone.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+	<cc:attribute name="validatorMessage" default="#{componentes['telefone.default.validator.message']}" />
+	<cc:attribute name="size" default="3" />
+	<cc:attribute name="inputSize" default="12" />
+</cc:interface>
+
+<cc:implementation>
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputMask id="#{cc.attrs.identificador}"	required="#{cc.attrs.required}" value="#{cc.attrs.value}"
+				maxlength="15" styleClass="m-wrap span#{cc.attrs.inputSize}"	requiredMessage="#{cc.attrs.requiredMessage}"
+				validatorMessage="#{cc.attrs.validatorMessage}"	mask="(99)9999-9999"
+				converter="br.unisys.TelefoneConverter" readonly="#{readOnly}">
+				<f:validator validatorId="validator.TelefoneValidator" />
+			</p:inputMask>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>
