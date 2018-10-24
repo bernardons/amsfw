@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="moeda" />
+
+	<cc:attribute name="label"
+		default="#{componentes['moeda.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="maxlenght" default="14" />
+	<cc:attribute name="alinhamento"></cc:attribute>
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage"
+		default="#{componentes['default.required.message']}" />
+	<cc:attribute name="size" default="3" />
+	<cc:attribute name="inputSize" default="12" />
+	<cc:attribute name="readOnly" default="false" />
+	<cc:attribute name="simbolo"
+		default="#{componentes['moeda.default.simbolo']}" />
+	<cc:attribute name="mascara" default="#,###,##0.00" />
+	<cc:attribute name="casasDecimais" default="2" />
+	<cc:attribute name="aceitaNegativo" default="false" />
+
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<div class="input-prepend span12">
+				<table>
+					<tr>
+						<td style="width: 27px;"><span class="add-on">#{cc.attrs.simbolo}</span></td>
+						<td><p:inputText value="#{cc.attrs.value}"
+								id="#{cc.attrs.identificador}"
+								style="#{cc.attrs.alinhamento} text-align: right;"
+								styleClass="m-wrap span#{cc.attrs.inputSize}"
+								maxlength="#{cc.attrs.maxlenght}"
+								required="#{cc.attrs.required}"
+								requiredMessage="#{cc.attrs.requiredMessage}"
+								converter="br.unisys.MoedasConverter"
+								readonly="#{cc.attrs.readOnly or readOnly}"
+								onkeyup="return numericMask(this,#{cc.attrs.casasDecimais},#{cc.attrs.maxlenght},true, event, #{cc.attrs.aceitaNegativo});"
+								onkeydown="return isNumericKey(event, #{cc.attrs.aceitaNegativo});">
+								<f:convertNumber pattern="#{cc.attrs.mascara}"
+									minFractionDigits="#{cc.attrs.casasDecimais}" />
+							</p:inputText></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ui-message-error-moeda">
+				<p:message for="#{cc.attrs.identificador}" />
+			</div>
+		</ui:define>
+	</ui:decorate>
+
+</cc:implementation>
+</html>
