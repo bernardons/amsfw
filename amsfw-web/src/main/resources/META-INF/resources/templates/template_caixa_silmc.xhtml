@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:u="http://com.unisys.br/awsfw"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/template_caixa_novo.xhtml">
+
+<ui:param name="sigla" value="Canal Lojistas Minha Casa Melhor" />
+<ui:param name="nomeSistema" value="" />
+<ui:define name="titulo">Canal Lojistas Minha Casa Melhor</ui:define>
+
+<ui:param name="versao" value="0.0.1" />
+<ui:param name="hora" value="#{utilController.horaPorExtenso}" />
+<ui:param name="textoRodape" value="Caixa Econômica Federal" />
+<ui:param name="ultimoAcesso" value="07/03/2013" />
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Canal Lojistas Minha Casa Melhor - Caixa</title>
+	</f:facet>
+	<link href="#{request.contextPath}/caixa/bootstrap/css/bootstrap.css"
+		rel="stylesheet" />
+	<link
+		href="#{request.contextPath}/caixa/bootstrap/css/bootstrap-responsive.min.css"
+		rel="stylesheet" />
+	<link href="#{request.contextPath}/caixa/css/pele.css" type="text/css"
+		rel="stylesheet" />
+	<link href="#{request.contextPath}/caixa/css/silmc.css" type="text/css"
+		rel="stylesheet" />
+	<link rel="shortcut icon"
+		href="#{request.contextPath}/caixa/imagem/favicon.ico" />
+</h:head>
+<body>
+	<div id="all">
+		<h:form id="formHeader">
+			<div id="header" class="ui-widget ui-widget-header ui-corner-top">
+
+				<div class="top">
+
+					<div class="content">
+
+						<div class="logo"></div>
+						<div class="perfil">
+
+							<ul>
+
+								<li><a
+									href="#{request.contextPath}/pages/manual/SILMC_Manual_do_Usuario.pdf"
+									target="_blank">Ajuda</a></li>
+
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="donw">
+
+					<div class="content">
+
+						<div class="titulo">
+							<ul>
+								<li class="text">
+									<h1>Canal Lojistas Minha Casa Melhor</h1>
+								</li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+						<div class="hello">
+
+							<ul>
+								<li>
+									<div>
+										<h5>Razão Social:</h5>
+										<label>#{segurancaController.razaoSocial}</label>
+									</div>
+									<div>
+										<h5>Olá, #{segurancaController.nomeUsuario}</h5>
+									</div>
+								</li>
+								<li class="vertical-align-top">
+									<div>
+										<h5>CNPJ:</h5>
+										<label>#{cnpj}</label>
+									</div>
+									<div>
+										<h5>&nbsp;</h5>
+									</div>
+								</li>
+
+								<li class="no-border-right padding-right-6px"><p:commandLink
+										styleClass="btnLaranja marginTop" title="Clique para sair"
+										action="#{loginController.logout}" immediate="true"
+										ajax="false">
+										<small>Sair</small>
+									</p:commandLink></li>
+							</ul>
+							<div class="border"></div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+				<!--  div id="header" class="ui-widget ui-widget-header ui-corner-top">
+					<div id="wrapHeader">
+						<div id="top">
+							<h2>#{sigla}</h2>
+							<div id="wrapIdentificacao">
+								<div id="identificacao">
+									<p class="descricao">
+										<small>Olá #{segurancaController.nomeUsuario}</small> <br />
+										#{hora}
+									</p>
+									<p class="descricao ultAcesso">
+										Seu último acesso<br /> foi em #{ultimoAcesso}
+									</p>
+									<p:commandLink styleClass="btnAzul marginTop"
+										title="Informações" immediate="true" ajax="false"
+										rendered="false">
+										<small>Infos</small>
+									</p:commandLink>
+									<p:commandLink styleClass="btnLaranja marginTop"
+										title="Clique para sair" action="#{loginController.logout}"
+										immediate="true" ajax="false">
+										<small>Sair</small>
+									</p:commandLink>
+									<div id="dropIdentif">
+										<div class="box first">
+											<h4>Razão Social</h4>
+											<p>CL Serviços</p>
+											<br />
+											<h4>CNPJ</h4>
+											<p>33.336066666</p>
+										</div>
+										<div class="box">
+											<h4>Responsável</h4>
+											<p>Nome do Responsavel</p>
+											<br />
+											<h4>CPF</h4>
+											<p>238.977.241-20</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div-->
+			</div>
+		</h:form>
+
+		<ui:include src="components/menu.xhtml" />
+
+		<div id="main">
+			<div id="breadcrumb">
+				<ul id="wrapBreadcrumb">
+					<li class="titulo">Você está em:</li>
+					<ui:insert name="breadcrumb" />
+				</ul>
+			</div>
+
+			<!-- Conteúdo -->
+			<ui:insert name="content" />
+		</div>
+		<div id="footer">
+			<div class="content">
+
+				<div class="left">
+					<p>#{textoRodape} - #{sigla}</p>
+				</div>
+				<div class="right">
+					<!--<ul>
+						<li><a href="#">Politica de Privacidade</a></li>
+						<li><a href="#">Termo de Uso</a></li>
+						<li class="no-border-right"><a href="#">Mapa do Site</a></li>
+					</ul>-->
+				</div>
+
+				<!-- <p class="sigla">Versão #{versao}</p> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Evitar o overhead de rede. -->
+	<script type="text/javascript"
+		src="#{request.contextPath}/caixa/js/jquery-1.9.1.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/caixa/js/jquery-ui-1.10.3.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/assets/bootstrap/js/bootstrap.min.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/assets/js/functions.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/assets/js/functions_pt_BR.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/caixa/js/jquery.ui.datepicker-pt-BR.js" />
+	<script type="text/javascript"
+		src="#{request.contextPath}/assets/js/jquery.maskMoney.js" />
+
+	<script type="text/javascript">
+
+        $(document).ajaxStart(function(){
+           document.body.style.cursor = 'wait';
+        });
+        $(document).ajaxComplete(function(){
+            document.body.style.cursor = 'default';
+        });
+        
+        $("#btnInfos").mouseover( function(){
+			$("#dropIdentif").css("display","block")			
+        }).mouseout(function(){
+        	$("#dropIdentif").css("display","none")
+        });
+
+		$(function() {
+			$( "#plc-tabs" ).tabs();
+			$(".ui-autocomplete-input").addClass("span12");
+		});
+
+		var is_dirty = false;
+		
+		$(':input').change(function() {
+		    if(!is_dirty){
+		        // When the user changes a field on this page, set our is_dirty flag.
+		        is_dirty = true;		        
+		    }
+		});
+
+	$(function() {
+
+
+			$( window ).resize(function() {
+				  render();
+			});
+
+			$( window ).load(function() {
+				  render();
+			});
+
+		});
+
+		function render() {
+
+			$("#main").css("height", "auto")
+			bodyHeight = $(window).height();
+			headerHeight = $("#header").height();
+			mainHeight = $("#main").height();
+			footer = 68 + 30;
+
+			contentSize = bodyHeight - (headerHeight + footer);
+
+			$("#main").css("min-height", mainHeight+"px");
+			$("#main").css("height", contentSize+"px");
+
+		}
+			
+	</script>
+</body>
+</html>

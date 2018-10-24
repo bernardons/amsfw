@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+
+<cc:interface>
+</cc:interface>
+
+<cc:implementation>
+
+	<script>
+
+
+
+		
+
+		$(".noCheck").mousedown(function(){
+			is_dirty = false;
+		});  
+
+		$(".noCheck").click(function(){
+			is_dirty = false;
+		});  
+
+
+		/*
+		window.onbeforeunload = function() {					
+			if(is_dirty){
+		        // call this if the box wasn't shown.
+			    return 'As alterações feitas não foram salvas e podem ser perdidas. ';
+		    }
+		};		
+		*/
+	</script>
+	
+</cc:implementation>
+</html>

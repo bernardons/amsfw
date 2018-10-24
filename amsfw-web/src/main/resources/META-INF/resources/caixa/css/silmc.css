@@ -1,0 +1,292 @@
+@CHARSET "ISO-8859-1";
+
+
+#header {
+	
+	background: blue;
+	background: url(../imagem/bg_header_caixa_silmc.jpg) repeat;
+	
+}
+
+#header .top .content{
+	
+	width: 928px;
+	margin:auto;
+	
+	overflow:hidden;
+	
+	padding: 30px 0 32px 0;
+	
+}
+
+#header .top .content .logo{
+	
+	background: url(../imagem/logo_caixa_silmc.jpg) no-repeat;
+	
+	display: block;
+	width: 219px;
+	height: 33px;
+	float: left;
+	
+}
+
+#header .top .content .perfil{
+	
+	display: block;
+	width: 219px;
+	
+	margin-top: 5px;
+	
+	float: right;
+		
+}
+
+#header .top .content .perfil ul,
+#header .top .content .perfil ul li{
+	
+	padding: 0;
+	margin: 0;
+}
+
+
+#header .top .content .perfil ul{	
+	
+	float: right;
+	
+}
+
+
+#header .top .content .perfil ul li,
+#header .top .content .perfil ul li a{
+	
+	font-family: "Arial";
+	font-size: 11px;
+	color: #def3fd;
+		
+}
+
+#header .donw .content{
+	
+	width: 928px;
+	
+	margin:auto;
+	
+	overflow:hidden;
+	
+}
+
+#header .donw .content .titulo{
+	
+	display: block;
+	
+	float: left;
+		
+}
+
+#header .donw .content .titulo ul{
+	
+	height: 94px;
+	max-width: 400px;
+	
+	margin: 0;
+	padding: 0;
+		
+}
+
+#header .donw .content .titulo ul li{
+	
+	display:inline-block;
+	
+	vertical-align: middle;
+	height: 94px;
+			
+}
+
+#header .donw .content .titulo ul li.text{
+
+	width: 97%;
+	height:auto;
+	height: initial;
+		
+}
+
+#header .donw .content .titulo h1{
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size: 25px;
+	color: #ffffff;
+		
+}
+
+#header .donw .content .hello{
+	
+	display: block;
+	
+	float: right;
+	
+	margin: 8px 0;
+			
+}
+
+#header .donw .content .hello ul{
+	
+	padding: 9px 0 10px 0;
+	background: url("../imagem/identificacao_bg_01_silmc.png") repeat-x;
+	float: left;
+}
+
+#header .donw .content .hello div.border{
+	
+	background: url("../imagem/identificacao_bg_02_silmc.png") no-repeat;
+	height: 79px;
+	float: right;
+	width: 8px;
+}
+
+#header .donw .content .hello ul li{
+	
+	border-right: 1px solid #bcdaf6;
+		
+	padding: 0 10px 0 10px;
+	margin:0px;
+	
+	display: inline-block;
+	
+	vertical-align: middle;
+		
+}
+
+#header .donw .content .hello ul li div h5{
+	
+	margin-bottom: 5px;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size: 11px;
+	color: #005689;
+		
+}
+
+#header .donw .content .hello ul li div label{
+	
+	margin-bottom: 10px;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #4c8cb1;
+		
+}
+
+
+#header .donw .content .hello ul li a.btnLaranja{
+	
+	margin: 0;
+}
+
+
+.no-margin_button{
+	
+	margin-bottom:0 !important; 
+}
+
+.no-border-right{
+	
+	border-right:none !important;
+}
+
+.padding-right-6px{
+	
+	padding-right:6px;
+}
+
+.vertical-align-top{
+	
+	vertical-align: top !important;
+	
+}
+
+#footer {
+	
+	padding: 12px 0 26px 0;
+	position: inherit;
+	
+}
+
+#footer p{
+	
+	margin: 0;
+}
+
+#footer .content{
+	
+	
+	margin: auto;
+	
+	width: 944px;
+	
+	overflow: hidden;
+	
+}
+
+#footer .content .left p,
+#footer .content .right ul li a{
+	
+	font-family: "Arial";
+	font-size: 11px;
+	color: #ffffff;
+	
+	font-weight: bold;
+	
+}
+
+
+#footer .content .left{
+	
+	float: left;
+}
+
+#footer .content .right{
+	
+	float: right;
+}
+
+
+
+#footer .content .right ul,
+#footer .content .right ul li{
+	
+	display: block;
+
+	margin: 0;
+	padding: 0;
+	
+	
+}
+
+#footer .content .right ul{
+	float: right;	
+}
+
+#footer .content .right ul li{
+	
+	border-right : 1px solid #ffffff;
+	padding: 0 8px;
+	
+	float: left;
+	
+}
+
+#footer .content .right ul li.no-border-right{
+	
+	border-right: none;
+	padding-right: 0;	
+}
+
+#footer .content .right ul li a{
+	
+	font-weight: bold;
+	
+}
+
+

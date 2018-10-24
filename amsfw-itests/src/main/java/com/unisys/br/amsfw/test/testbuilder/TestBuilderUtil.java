@@ -1,0 +1,98 @@
+package com.unisys.br.amsfw.test.testbuilder;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Classe utilitária de construção de entidades de teste.
+ * 
+ * @author DelfimSM
+ * 
+ */
+public final class TestBuilderUtil {
+
+	private static final Logger LOG = LoggerFactory.getLogger(TestBuilderUtil.class);
+
+	private TestBuilderUtil() {
+	}
+
+	/**
+	 * método que recupera todos os builders.
+	 * 
+	 * @param classes
+	 * @return
+	 */
+	public static Collection<Class<? extends TestBuilder>> getBuilder(Class<? extends TestBuilder>... classes) {
+		return TestBuilderUtil.getCollection(classes);
+	}
+
+	/**
+	 * Retorna uma coleção tipada com o tipo T passado um parâmetro.
+	 * 
+	 * @param params
+	 * @return
+	 */
+	public static <T> Collection<T> getCollection(T... params) {
+		Collection<T> colecao = new ArrayList<T>();
+		for (T param : params) {
+			colecao.add(param);
+		}
+
+		return colecao;
+	}
+
+	/**
+	 * Retorna toda a lista de contrutores de um objetos de teste assim como sua
+	 * lista de dependências.
+	 * 
+	 * @param nomesArquivosXls
+	 * @param builders
+	 * @return
+	 */
+	public static Collection<String> getAllBuilders(
+		Collection<String> nomesArquivosXls,
+		Collection<Class<? extends TestBuilder>> builders) {
+
+		if (nomesArquivosXls == null) {
+			nomesArquivosXls = new ArrayList<String>();
+		}
+
+		if (builders != null) {
+			try {
+				for (Class<? extends TestBuilder> classeBuilder : builders) {
+
+					TestBuilder objeto = classeBuilder.newInstance();
+					// Itera em todas as dependências
+					if (objeto.getDependencias() != null) {
+						getAllBuilders(nomesArquivosXls, objeto.getDependencias());
+					}
+
+					// Adiciona arquivos XLS do objeto atual
+					Collection<String> nomesArquivosIteracaoXls = objeto.getNomesArquivosXls();
+					if (nomesArquivosIteracaoXls != null) {
+						for (String valor : nomesArquivosIteracaoXls) {
+							String nomeClasseAtual = objeto.getClass().getName();
+							String nomePacoteAtual =
+									"/" + nomeClasseAtual.substring(0, nomeClasseAtual.lastIndexOf(".") + 1);
+							nomePacoteAtual = nomePacoteAtual.replace(".", "/");
+							valor = nomePacoteAtual + valor;
+
+							if (!nomesArquivosXls.contains(valor)) {
+								nomesArquivosXls.add(valor);
+							}
+						}
+					}
+				}
+			} catch (InstantiationException e) {
+				LOG.error("Problema ao instanciar o objeto.", e);
+			} catch (IllegalAccessException e) {
+				LOG.error("Acesso ilegal ao objeto.", e);
+			}
+		}
+
+		return nomesArquivosXls;
+	}
+}

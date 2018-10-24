@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:u="http://com.unisys.br/awsfw"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:param name="sigla" value="#{layoutController.siglaSistema}" />
+<ui:param name="nomeSistema" value="#{layoutController.nomeSistema}" />
+<ui:param name="versao" value="#{layoutController.versaoSistema}" />
+<ui:param name="hora" value="#{utilController.horaPorExtenso}" />
+<ui:param name="textoRodape" value="#{layoutController.textoRodape}#{layoutController.nomeSistema}"/>
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>#{nomeSistema} - Caixa</title>
+	</f:facet>
+	<link href="#{request.contextPath}/caixa/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/caixa/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/caixa/css/pele.css" type="text/css" rel="stylesheet" />
+	<link href="#{request.contextPath}/caixa/css/login.css" type="text/css" rel="stylesheet" />
+	<link rel="shortcut icon" href="#{request.contextPath}/caixa/imagem/favicon.ico" />
+</h:head>
+<body>
+	<div id="all">
+		<h:form id="formHeader">
+			<div id="header" class="ui-widget ui-widget-header ui-corner-top">
+			
+				<div class="top">
+					
+					<div class="content">
+						
+						<div class="logo"></div>
+						<div class="perfil"></div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="donw">
+					
+					<div class="content">
+						
+						<div class="titulo">
+							<h1>Canal Lojistas Minha Casa Melhor</h1>
+						</div>
+						<div class="hello"></div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</h:form>
+		
+		<div id="main">
+	
+			<!-- Conteúdo -->
+			<ui:insert name="content" />
+		</div>
+		
+		<div id="footer">
+			<div class="content">
+			
+				<div class="left">
+					<p>#{textoRodape}  #{sigla}</p>
+				</div>
+				<div class="right">
+					<!--<ul>
+						<li><a href="#">Politica de Privacidade</a></li>
+						<li><a href="#">Termo de Uso</a></li>
+						<li class="no-border-right"><a href="#">Mapa do Site</a></li>
+					</ul>-->
+				</div>
+				
+				<!-- <p class="sigla">Versão #{versao}</p> -->
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="#{request.contextPath}/caixa/js/jquery-1.9.1.js" />
+	<script type="text/javascript" src="#{request.contextPath}/caixa/js/jquery-ui-1.10.3.js" />
+	<script type="text/javascript" src="#{request.contextPath}/assets/bootstrap/js/bootstrap.min.js" />
+	<script type="text/javascript" src="#{request.contextPath}/assets/js/functions.js" />
+	<script type="text/javascript" src="#{request.contextPath}/assets/js/functions_pt_BR.js" />
+	<script type="text/javascript" src="#{request.contextPath}/caixa/js/jquery.ui.datepicker-pt-BR.js" />
+	
+	<script type="text/javascript">
+
+        $(document).ajaxStart(function(){
+           document.body.style.cursor = 'wait';
+        });
+        $(document).ajaxComplete(function(){
+            document.body.style.cursor = 'default';
+        });
+
+        $("#btnInfos").mouseover( function(){
+			$("#dropIdentif").css("display","block")			
+        }).mouseout(function(){
+        	$("#dropIdentif").css("display","none")
+        });
+
+    </script>
+
+	<script>
+		
+		$(function() {
+			$( "#plc-tabs" ).tabs();
+		});
+
+		var is_dirty = false;
+		
+		$(':input').change(function() {
+		    if(!is_dirty){
+		        // When the user changes a field on this page, set our is_dirty flag.
+		        is_dirty = true;		        
+		    }
+		});
+
+		$(function() {
+
+			
+
+			$( window ).resize(function() {
+				  render();
+			});
+
+			$( window ).load(function() {
+				  render();
+			});
+
+
+			
+		
+		});
+
+		function render() {
+
+			$("#main").css("height", "auto")
+			bodyHeight = $(window).height();
+			headerHeight = $("#header").height();
+			mainHeight = $("#main").height();
+			footer = 68 + 30;
+
+			contentSize = bodyHeight - (headerHeight + footer);
+
+			$("#main").css("min-height", mainHeight+"px");
+			$("#main").css("height", contentSize+"px");
+
+		}
+			
+	</script>
+</body>
+</html>

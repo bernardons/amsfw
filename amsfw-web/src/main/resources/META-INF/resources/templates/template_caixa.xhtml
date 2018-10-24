@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:head>
+	<f:facet name="first">
+		<title><ui:insert name="titulo" /></title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+	</f:facet>
+	<f:view locale="#{languageController.localeCode}"> </f:view>
+	
+	<link rel="shortcut icon" href="#{request.contextPath}/caixa/imagem/favicon.ico" />
+	
+	<link href="#{request.contextPath}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/metro.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style_responsive.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style_caixa.css" rel="stylesheet" />
+	
+
+	<!-- Verificar a utilização -->
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/jquery-tags-input/jquery.tagsinput.css" />
+	
+	<link rel="shortcut icon" href="favicon.ico" />
+</h:head>
+
+<!-- Inicializa o body -->
+<body>
+
+	<!-- Inclui o Cabeçalho (Header) -->
+	<ui:include src="components/header_caixa.xhtml" />
+
+	<!-- Inicializa o container da página completa -->	
+	<div class="page-container row-fluid">
+
+		<!-- Inclui o menu lateral (Sidebar) -->
+		<ui:include src="components/sidebar.xhtml" />
+
+		<!-- Inicializa a página -->
+		<div class="page-content">
+
+			<!-- Inicializa o container da página -->
+			<div class="container-fluid">
+
+				<!-- Título e Breadcrumb da página -->
+				<ui:include src="components/titleBreadcrumb.xhtml" />	
+
+				<!-- Inicializa o conteúdo variável da página -->
+				<div class="row-fluid">
+					<div class="span12">
+					
+						<script type="text/javascript">
+							$(document).ready(function(){
+							    $("a[rel=modal]").click( function(ev){
+							    	 var id =$("customModal").attr('id');
+							         var alturaTela = $(document).height();
+							         var larguraTela = $(window).width();
+							         //colocando o fundo preto
+							         $('#mascara').css({'width':larguraTela,'height':alturaTela});
+							         $('#mascara').fadeTo("slow",0.7);
+							         var left = ($(window).width() /2) - ( $(id).width() / 2 );
+							         var top = ($(window).height() / 2) - ( $(id).height() / 2 );
+							         $(id).css({'top':top,'left':left});
+							         $(id).show();
+							    });
+							    $("a[rel=modalUnisys]").click( function(){
+							        $("#mascara").hide();
+							    });
+							});
+						</script>
+					
+						<!-- Conteudo vem aqui -->
+						<ui:insert name="content" />
+						
+					</div>
+				</div>
+				<!-- Finaliza o conteúdo variável da página -->
+			</div>
+			<!-- Finaliza o container da página -->
+			
+		</div>
+		<!-- Finaliza a página -->
+
+	</div>
+	<!-- Finaliza o container da página completa -->
+
+	<!-- Inclui o rodapé da página (footer) -->
+	<ui:include src="components/footer.xhtml" />	
+
+</body>
+
+<!-- Finaliza o body -->
+</html>

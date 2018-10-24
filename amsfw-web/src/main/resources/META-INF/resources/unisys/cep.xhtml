@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="cep"/>
+	<cc:attribute name="label" default="#{componentes['cep.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+	<cc:attribute name="size" default="4" />
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputMask value="#{cc.attrs.value}"
+					id="#{cc.attrs.identificador}" styleClass="m-wrap"
+					mask="99.999-999" required="#{cc.attrs.required}"
+					requiredMessage="#{cc.attrs.requiredMessage}" converter="br.unisys.CepConverter" readonly="#{readOnly}"/>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>

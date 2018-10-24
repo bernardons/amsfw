@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:head>
+	<f:facet name="first">
+		<title><ui:insert name="titulo" /></title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+	</f:facet>
+	<f:view locale="#{languageController.localeCode}"> </f:view>
+	
+	<link href="#{request.contextPath}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/metro.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style_responsive.css" rel="stylesheet" />
+	<link href="#{request.contextPath}/assets/css/style_unisys.css" rel="stylesheet" />
+	<link rel="stylesheet" href="#{request.contextPath}/assets/data-tables/DT_bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/gritter/css/jquery.gritter.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/uniform/css/uniform.default.css" />
+
+	<!-- Verificar a utilização -->
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/chosen-bootstrap/chosen/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/gritter/css/jquery.gritter.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/jquery-tags-input/jquery.tagsinput.css" />
+	
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/assets/bootstrap-fileupload/bootstrap-fileupload.css" />
+	
+	<link rel="shortcut icon" href="favicon.ico" />
+</h:head>
+
+<!-- Inicializa o body -->
+<body>
+
+	<!-- Inclui o Cabeçalho (Header) -->
+	<ui:include src="components/header.xhtml" />
+
+	<!-- Inicializa o container da página completa -->	
+	<div class="page-container row-fluid">
+
+		<!-- Inclui o menu lateral (Sidebar) -->
+		<ui:include src="components/sidebar.xhtml" />
+
+		<!-- Inicializa a página -->
+		<div class="page-content">
+
+			<!-- Inicializa o container da página -->
+			<div class="container-fluid">
+
+				<!-- Título e Breadcrumb da página -->
+				<ui:include src="components/titleBreadcrumb.xhtml" />	
+
+				<!-- Inicializa o conteúdo variável da página -->
+				<div class="row-fluid">
+					<div class="span12">
+					
+						<!-- Conteudo vem aqui -->
+						<ui:insert name="body" />
+						
+					</div>
+				</div>
+				<!-- Finaliza o conteúdo variável da página -->
+			</div>
+			<!-- Finaliza o container da página -->
+			
+		</div>
+		<!-- Finaliza a página -->
+
+	</div>
+	<!-- Finaliza o container da página completa -->
+
+	<!-- Inclui o rodapé da página (footer) -->
+	<ui:include src="components/footer.xhtml" />	
+
+</body>
+
+<!-- Finaliza o body -->
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="rowsPerPageTemplate" default="10,15,20"/>
+	<cc:attribute name="rows" default="10"/>
+	<cc:attribute name="emptyMessage" default="Registro não encontrado." required="false" />
+	<cc:attribute name="update" default="dataTableObjetos"/>
+</cc:interface>
+
+<cc:implementation>
+
+	<p:dataTable tableStyleClass="plc-tabela-table" var="objeto" value="#{cc.attrs.value}" rowKey="#{objeto.id}" paginator="true" rows="#{cc.attrs.rows}"  
+		paginatorTemplate="Ir para página: {PageLinks} &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Itens por página: {RowsPerPageDropdown} &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {CurrentPageReport}"  
+		currentPageReportTemplate="Visualizando página: {currentPage} de {totalPages}" rowIndexVar="data" rowStyleClass="#{data mod 2 == 0 ? 'odd' : 'even'}" rowsPerPageTemplate="#{cc.attrs.rowsPerPageTemplate}" 
+		paginatorPosition="bottom" paginatorAlwaysVisible="false" id="dataTableObjetos" lazy="true" emptyMessage="#{cc.attrs.emptyMessage}">
+
+		<cc:insertChildren />
+
+	</p:dataTable>
+	<u:removerModal update="#{cc.attrs.update}"/>	
+</cc:implementation>
+</html>

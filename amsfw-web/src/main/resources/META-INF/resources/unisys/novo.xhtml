@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+	<cc:attribute name="immediate" default="false"/>
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Botão novo -->
+	<p:commandLink styleClass="btn btn-orange noCheck" value="#{global.novo}" rendered="#{request.isUserInRole(funcionalidade.concat('_incluir'))}"
+			action="#{controller['telaCadastro'].concat('?faces-redirect=true')}" ajax="false" immediate="#{cc.attrs.immediate}"/>
+
+</cc:implementation>
+</html>
