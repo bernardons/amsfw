@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composite="http://java.sun.com/jsf/composite"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+	version="2.0">
+
+	<namespace>http://com.unisys.br/awsfw</namespace>
+	<composite-library-name>unisys</composite-library-name>
+
+</facelet-taglib>

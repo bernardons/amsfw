@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="tituloReport" required="true"/>
+	<cc:attribute name="colunas" required="true"/>
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Botão exportar PDF -->
+	<p:commandLink styleClass="btn btn-orange noCheck"
+		value="#{global['exportar.pdf']}"
+		ajax="false"
+		immediate="true"
+		actionListener="#{controller.exportarPDF}"/>
+	<p:outputLabel id="tituloReportDataTable" value="#{cc.attrs.tituloReport}" rendered="false"/>
+	<p:outputLabel id="tamanhoColunasReportDataTable" value="#{cc.attrs.colunas}" rendered="false"/>
+
+</cc:implementation>
+</html>
