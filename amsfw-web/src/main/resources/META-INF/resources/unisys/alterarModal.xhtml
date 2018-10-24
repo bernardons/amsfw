@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:u="http://com.unisys.br/awsfw"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+	<composite:interface>
+		<composite:attribute name="update" required="true"/>
+		<composite:attribute name="buttonYesValue" default="#{componentes['customModal.default.confirma.alteracao']}" />
+		<composite:attribute name="buttonNoValue" default="#{componentes['customModal.default.cancelar']}" />
+		<composite:attribute name="widgetVar" default="dialogAlterar" />
+		<composite:attribute name="metodoAlterar" default="alterar" />
+		<composite:attribute name="headerAlterar" default="Alterar"/>
+		<composite:attribute name="mensagemAlterar" default="#{componentes['modal.alterar.deseja.realmente.alterar']}" />
+		<composite:attribute name="width" default="" />
+		<composite:attribute name="style" default="" />
+	</composite:interface>
+
+	<composite:implementation>
+		<p:confirmDialog width="#{cc.attrs.width}" style="#{cc.attrs.style}"
+			widgetVar="#{cc.attrs.widgetVar}" styleClass="modal-unisys modal hide fade in">
+			
+			<f:facet name="header">				
+				<h4>
+					<i class="icon-warning-sign" style="margin-right: 10px;"></i>
+					#{cc.attrs.headerAlterar}					
+				</h4>
+			</f:facet>
+			
+			<f:facet name="message">				
+				<h:panelGroup id="panelmessage" layout="block">
+					#{cc.attrs.mensagemAlterar}
+				</h:panelGroup>
+			</f:facet>
+
+			<br/>
+			<div style="float: right">
+				<p:commandLink value="#{cc.attrs.buttonYesValue}" action="#{controller[cc.attrs.metodoAlterar]}" oncomplete="#{cc.attrs.widgetVar}.hide()" styleClass="btn btn-blue" 
+					immediate="true" process="@this" style="margin-left: 14px" update="@([id$=#{cc.attrs.update}])" onclick="is_dirty = true;" ajax="false">					
+				</p:commandLink>
+				<p:commandLink value="#{cc.attrs.buttonNoValue}" styleClass="btn btn-orange" onclick="#{cc.attrs.widgetVar}.hide(); is_dirty = false;" style="margin-left: 5px" immediate="true" />
+			</div>
+		</p:confirmDialog>		
+	</composite:implementation>
+</ui:composition>
