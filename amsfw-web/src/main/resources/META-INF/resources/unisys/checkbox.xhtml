@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="checkbox"/>
+
+	<cc:attribute name="label"/>
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['checkbox.default.required.message']}"/>
+	<cc:attribute name="itemLabel" required="true"/>
+	<cc:attribute name="size" default="4" />
+</cc:interface>
+
+<cc:implementation>
+    <style type="text/css">
+		.ui-helper-hidden-accessible {
+			clip: auto;
+		}
+		
+		.ui-chkbox .ui-chkbox-label {
+			cursor: pointer;
+			margin: 0px 20px;
+			outline: medium none;
+			z-index: 1;
+			float: left;
+		}
+	</style>
+	<div class="span6">
+		<div class="control-group">
+       		<h:outputLabel class="control-label" for="#{cc.attrs.identificador}">#{cc.attrs.label}</h:outputLabel>
+       		<div class="controls">       				
+				<p:selectBooleanCheckbox value="#{cc.attrs.value}" requiredMessage="#{cc.attrs.requiredMessage}"
+					id="#{cc.attrs.identificador}" required="#{cc.attrs.required}" itemLabel="#{cc.attrs.itemLabel}" readonly="#{readOnly}" />
+				<p:message for="#{cc.attrs.identificador}" />
+       		</div>
+       	</div>
+    </div>
+</cc:implementation>
+</html>

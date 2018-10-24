@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		2013 Unisys by AMS.
+		<div class="span pull-right">
+			<span class="go-top"><i class="icon-angle-up"></i></span>
+		</div>
+	</div>
+	
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS -->
+	<!-- Load javascripts at bottom, this will reduce page load time -->
+	<script type="text/javascript" src="#{request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>			
+	<script type="text/javascript" src="#{request.contextPath}/assets/breakpoints/breakpoints.js"></script>			
+	<script type="text/javascript" src="#{request.contextPath}/assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>	
+	<script type="text/javascript" src="#{request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="#{request.contextPath}/assets/js/jquery.blockui.js"></script>
+	<script type="text/javascript" src="#{request.contextPath}/assets/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="#{request.contextPath}/assets/uniform/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="#{request.contextPath}/assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+
+	<!-- ie8 fixes -->
+	<!--[if lt IE 9]>
+	<script src="#{request.contextPath}/assets/js/excanvas.js"></script>
+	<script src="#{request.contextPath}/assets/js/respond.js"></script>
+	<![endif]-->
+	
+	
+	<script src="#{request.contextPath}/assets/js/functions.js"></script>
+	<script src="#{request.contextPath}/assets/js/app_#{languageController.localeCode}.js"></script>		
+	<script>
+		jQuery(document).ready(function() {			
+			App.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+
+</html>

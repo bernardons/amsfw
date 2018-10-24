@@ -1,0 +1,2054 @@
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+"http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib xmlns="http://java.sun.com/JSP/TagLibraryDescriptor">
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>u</short-name>
+	<uri>http://com.unisys.br/awsfw</uri>
+	<display-name>AMS Framework - Components Library</display-name>
+    <description>
+        This tag library contains ui compositions of AMS Framework from Unisys.
+    </description>
+       
+    <tag>
+    	<name>arquivo</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um item de formulário com label, campo para carregar arquivo(s) e Mensagem</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+    </tag>
+
+    <tag>
+    	<name>autoComplete</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma caixa de texto com a função de autocomplete.</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o identificador do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>label</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>		
+    	</attribute>
+    	<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>  	
+    	<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>	
+    	<attribute>
+			<name>size</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Comprimento da caixa de texto. Somente valores de 1 a 12.
+			</description>
+		</attribute>
+		<attribute>
+			<name>bean</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação de buscar as palavras para o autocomplete
+			</description>
+		</attribute>
+		<attribute>
+			<name>itemLabel</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto de cada valor retornado daquilo que foi digitado.
+			</description>
+		</attribute>
+		<attribute>
+			<name>ajaxAutoc</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Habilita o Ajax para o autocomplete 
+			</description>
+		</attribute>
+		<attribute>
+			<name>beanAjax</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado para o autocomplete. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+		<attribute>
+			<name>methodAjax</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que irá executar uma ação quando o usuário escolher uma palavra no autocomplete.
+			</description>
+		</attribute>
+		<attribute>
+			<name>updateAutoc</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado quando o usuário escolher uma palavra no autocomplete.
+			</description>
+		</attribute>
+		<attribute>
+			<name>minQueryLength</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mínimo de caracteres para iniciar a pesquisa de palavras para o autocomplete.
+			</description>
+		</attribute>
+		<attribute>
+			<name>maxLength</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Maximo de caracteres para o campo. Default 8.
+			</description>
+		</attribute>
+    </tag>
+      
+    <tag>
+    	<name>cabecalhoTabela</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um cabeçalho para uma tabela</description>
+    	<attribute>
+    		<name>nome</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o nome do cabeçalho.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>hide</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>boolean</type>
+			<description>
+				Define o nome do cabeçalho.
+			</description>			
+    	</attribute>
+    </tag>
+	
+	<tag>
+		<name>cep</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para CEP</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+	</tag>
+		
+	<tag>
+		<name>checkbox</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de checkbox</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do Campo de Checkbox
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Objeto que receberá um valor booleano de seleção.
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>itemLabel</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Nome do item.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>cnpj</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para CNPJ</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>validatorMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando após a validação o CNPJ for inválido.
+			</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>cpf</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para cpf</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>validatorMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando após a validação o CPF for inválido.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>customModal</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma janela PopUp com dois botões, um para executar uma ação (Button Yes) e outro para fechar o PopUp (Button No).</description>
+    	<attribute>
+    		<name>widgetVar</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define um nome para o PopUp que será usado para acioná-lo.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>header</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Título do PopUp.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>message</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem do PopUp.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>bean</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado. Ex: "#{usuarioPersistController}".
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>method</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação do Button Yes do PopUp.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>update</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado quando o for acionada a ação do PopUp.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>buttonYesValue</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto apresentado no Button Yes.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>buttonNoValue</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto apresentado no Button No.
+			</description>
+    	</attribute>  	
+	</tag>
+	
+	<tag>
+		<name>data</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com calendário para seleção de data</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>size</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Tamanho do componente, valores validos de 1 a 12.
+			</description>
+		</attribute>
+		<attribute>
+			<name>readOnly</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se o atributo é somente leitura.
+			</description>
+		</attribute>	
+	</tag>
+	
+	<tag>
+		<name>email</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para e-mail</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>validatorMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando após a validação o e-mail for inválido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>maxlenght</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Determina a quantidade máxima de caracteres aceita pelo componente. Valor default é 50.
+			</description>
+		</attribute>
+	</tag>
+		
+	<tag>
+		<name>input</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>
+			Cria um item de formulário com label, inputText e Mensagem.
+		</description>
+		<attribute>
+			<name>identificador</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+		</attribute>
+		<attribute>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>readOnly</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se o atributo é somente leitura.
+			</description>
+		</attribute>
+		<attribute>
+			<name>size</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o tamanho do componente, tamanhos permitidos de 1 a 12, utiliza a classe "span".
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+    	<name>inputAutoComplete</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um imput com ajax e um imput com autocomplete.</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o identificador do input.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>label</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label 1º componente
+			</description>		
+    	</attribute>
+    	<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao input.
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>		
+		<attribute>
+			<name>sizeLinha</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Espaço da linha que o componente irá ocupar. 12 para linha inteira e 6 para metade da linha.
+			</description>
+		</attribute>
+		<attribute>
+			<name>bean</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado para ação do ajax ao sair do primeiro input. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+		<attribute>
+			<name>update</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado após a ação ajax no input.
+			</description>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação ajax do primeiro input.
+			</description>
+		</attribute>
+		<attribute>
+			<name>ajax</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Habilita o Ajax para o input.
+			</description>
+		</attribute>
+    	<attribute>
+    		<name>identificadorAutoc</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o identificador do input com autocomplete.
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>beanAutoc</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado ao componente auto complete. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+    	<attribute>
+    		<name>labelAutoc</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no componente auto complete
+			</description>		
+    	</attribute>
+    	<attribute>
+			<name>methodAutoc</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação que irá preencher a lista de itens do auto complete.
+				Este método deverá receber um parametro do tipo String. Ex.: public List autoComplete(String query) 
+			</description>
+		</attribute>
+    	<attribute>
+			<name>valueAutoc</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao input com autocomplete.
+			</description>
+		</attribute>		
+		<attribute>
+			<name>ajaxAutoc</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Habilita o Ajax para o input com autocomplete.
+			</description>
+		</attribute>
+		<!-- <attribute>
+			<name>beanAjax</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado ao evento ajax do auto complete. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+		<attribute>
+			<name>methodAjax</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação quando selecionado um item do auto complete.
+				O método requer a seguinte assinatura: public void nome_metodo(SelectEvent event)
+			</description>
+		</attribute> -->
+		<attribute>
+			<name>updateAutoc</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado após a ação no input com autocomplete.
+			</description>
+		</attribute>
+		<attribute>
+			<name>minQueryLength</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mínimo de caracteres para iniciar a pesquisa de palavras para o autocomplete.
+			</description>
+		</attribute>
+    </tag>
+	
+	<tag>
+    	<name>inputDuplo</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um imput com ajax e um imput simples um ao lado do outro.</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o identificador do input 1.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>identificador2</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define o identificador do input 2.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>label</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do primeiro componente
+			</description>		
+    	</attribute>
+    	<attribute>
+    		<name>label2</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do segundo componente
+			</description>		
+    	</attribute>
+    	<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao input 1.
+			</description>
+		</attribute>  
+    	<attribute>
+			<name>value2</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao input 2.
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>		
+		<attribute>
+			<name>sizeLinha</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Espaço da linha que o componente irá ocupar. 12 para linha inteira e 6 para metada da linha.
+			</description>
+		</attribute>
+		<attribute>
+			<name>bean</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado. Ex: "#{usuarioPersistController}".
+			</description>
+		</attribute>
+		<attribute>
+			<name>update</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado após a ação no input 1.
+			</description>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método que executará a ação no input 1.
+				Esse método deverá ter a assinatura: Ex.: public void nome_metodo(javax.faces.event.AjaxBehaviorEvent event)
+			</description>
+		</attribute>
+		<attribute>
+			<name>ajax</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Habilita o Ajax para o input 1.
+			</description>
+		</attribute>
+    </tag>
+	
+	<tag>
+		<name>intervaloData</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um item de formulário para selecionar um intervalo de datas</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>linha</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma linha para organizar componentes na tela.</description>
+	</tag>
+	
+		
+	<tag>
+		<name>listBox</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma caixa de texto que apresenta uma lista.</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente.
+			</description>
+		</attribute>
+		<attribute>
+			<name>opcoes</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Lista que será apresentada no componente.
+			</description>
+		</attribute>
+		<attribute>
+    		<name>itemLabel</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Item da lista que será o texto das opções do listBox.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>itemValue</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define qual valor deverá ser enviado ao servidor.
+			</description>
+    	</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo é de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver nenhum item selecionado.
+			</description>
+		</attribute>
+		<attribute>
+			<name>size</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Comprimento da caixa. Somente valores de 1 a 12.
+			</description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Altura da caixa do listBox. A altura é defina em px. Valor Default é 110px.
+				Passar somente o valor em Inteiro, exemplo: "130"
+			</description>
+		</attribute>
+		<attribute>
+    		<name>change</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método do Controller que será executado após a seleção.
+			</description>
+    	</attribute>	
+    	<attribute>
+    		<name>ajax</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Habilita o ajax.
+			</description>
+    	</attribute>
+		<attribute>
+    		<name>bean</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado. Ex: "#{usuarioPersistController}". É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>update</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				ID do componente que será renderizado após a seleção. É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>method</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método do Controller que será executado após a seleção. É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>totalItens</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Total de itens que será exibido.
+			</description>
+    	</attribute>
+	</tag>
+	
+	<tag>
+		<name>moeda</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para valor monetário</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>maxlenght</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Determina a quantidade máxima de caracteres aceita pelo componente. Valor default é 14.
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>mascara</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mascara do valor monetario.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>radio</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma sequência RadioButtons</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>label</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>value</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>options</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Lista que irá compor as opções da sequência de RadioButtons.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>required</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>  	
+    	<attribute>
+    		<name>itemLabel</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Item da lista que será o texto das opções de RadioButtons.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>itemValue</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Item da lista que será o valor das opções de RadioButtons.
+			</description>
+    	</attribute>
+	</tag>
+	
+	<tag>
+		<name>select</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um ComboBox</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>label</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>value</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>options</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Lista que irá compor as opções do ComboBox.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>required</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+    	<attribute>
+    		<name>itemVazio</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Habilita item vazio.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>labelItemVazio</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto do item vazio. Ex: "Selecione".
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>itemLabel</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Item da lista que será o texto das opções do ComboBox.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>itemValue</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Item da lista que será o valor das opções do ComboBox.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>bean</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Controller que será referenciado. Ex: "#{usuarioPersistController}". É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>update</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				ID do componente que será renderizado após a seleção. É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>listener</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Método do Controller que será executado após a seleção. É necessário habilitar o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>ajax</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Habilita o ajax.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>readonly</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se o componente será readonly.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>temConverter</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se irá utilizar o converter generico para entidades.
+			</description>
+    	</attribute>
+	</tag>
+	
+	<tag>
+		<name>table</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um tabela onde serão inseridos componentes.</description>
+    	<attribute>
+    		<name>nome</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Nome da Tabela.
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>hide</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Indica se o componente estará expandido.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>operacoes</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Componente com botão para cadastrar, botão de ações e input para pesquisa.</description>
+    	<attribute>
+    		<name>nomeBotaoCadastrar</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Nome do primeiro botão, Default 'Cadastrar'
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>labelPesquisarPor</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto que será exibido na label junto ao input. Default: 'Pesquisar por nome'
+			</description>
+		</attribute>
+		<attribute>
+			<name>atributoDePesquisa</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Value associado ao input de pesquisa. Ex.: #{bean.objetoFiltro.nome}
+			</description>
+		</attribute>
+		<attribute>
+			<name>paginaCadastro</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Ação a ser executada ao clicar no primeiro botão. Ação de navegação, pode ser passado o caminho de uma página .xhtml
+			</description>
+		</attribute>
+		<attribute>
+			<name>update</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado ao pesquisar pelo input de pesquisa.
+			</description>
+		</attribute>
+		<attribute>
+			<name>quantidadeAcoes</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Quantidade de ações que irá aparecer no dropdown do botão Ações.
+				Valores permitidos de 1 a 5.
+			</description>
+		</attribute>
+		<attribute>
+			<name>action1</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Ação que será executada no item da lista.				
+			</description>
+		</attribute>
+		<attribute>
+			<name>value1</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que será exibida no item da lista de numero x.				
+			</description>
+		</attribute>		
+		<attribute>
+			<name>update1</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Componente que será renderizado ao processar a ação.				
+			</description>
+		</attribute>				
+	</tag>
+	
+	<tag>
+		<name>telefone</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um campo de texto com máscara para telefone</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Boolean</type>
+			<description>
+				Determinar se o campo será de preenchimento obrigatório.
+			</description>
+		</attribute>
+		<attribute>
+			<name>requiredMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando o campo for obrigatório e não tiver sido preenchido.
+			</description>
+		</attribute>
+		<attribute>
+			<name>validatorMessage</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Mensagem que será exibida quando após a validação o CPF for inválido.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>textArea</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria uma area de texto.</description>
+    	<attribute>
+    		<name>identificador</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Identificador do item
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Texto exibido no label do componente
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valor associado ao inputText do componente
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+    	<name>picklist</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um componente com duas lista, onde permite atribuir elementos de uma lista a outra.</description>
+    	<attribute>
+    		<name>id</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				ID do componente.
+			</description>
+    	</attribute>
+    	<attribute>
+    		<name>value</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Valores que aparecerão na primeira lista.
+			</description>			
+    	</attribute>
+    	<attribute>
+    		<name>itemLabel</name>
+    		<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que será exibida na lista.
+			</description>			
+    	</attribute>
+    	<attribute>
+    		<name>addLabel</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Titulo do botão "adicionar"que será exibido ao passar o mouse. 
+			</description>			
+    	</attribute>    	
+    	<attribute>
+    		<name>removeLabel</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Titulo do botão "remover"que será exibido ao passar o mouse. 
+			</description>			
+    	</attribute>
+    	<attribute>
+    		<name>labelListaPadrao</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que aparecerá na primeira lista.
+			</description>			
+    	</attribute>
+    	<attribute>
+    		<name>labelListaSecundaria</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que aparecerá na Secunda lista.
+			</description>			
+    	</attribute>
+    </tag>
+	
+	<tag>
+		<name>tabelaPesquisa</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Cria um dataTable para inserção das colunas</description>
+    	<attribute>
+    		<name>nome</name>
+    		<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Descrição data Tabela que será exibida na tela. 
+			</description>
+    	</attribute>
+    	<attribute>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Nome da variavel que será utilizada para referenciar a entidade em operação.
+			</description>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Atributo que contém os valores que irão aparecer no dataTable.
+			</description>
+		</attribute>
+		<attribute>
+			<name>modoSelecao</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Indica se irá aparecer a coluna com checkBox para selecionar as linhas do dataTable. 
+				Valores: "true" ou "false"
+			</description>
+		</attribute>
+		<attribute>
+			<name>atributoPesquisa</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Atributo que será utilizado para filtrar os objetos no dataTable.
+				Ex.: #{controller.objetoFiltro.nome}
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>fieldSet</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>Cria um moldura no padrao da Caixa</description>
+		<attribute>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que será exibida na moldura.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>crudButtonsCaixa</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>Insere os botões novo, salvar ou editar, cancelar e remover.</description>
+		<attribute>
+			<name>visualizar</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se irá aparecer a coluna visualizar.
+			</description>
+		</attribute>
+		<attribute>
+			<name>alterar</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se irá aparecer a coluna Alterar.
+			</description>
+		</attribute>
+		<attribute>
+			<name>remover</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define se irá aparecer a coluna remover.
+			</description>
+		</attribute>
+		<attribute>
+			<name>update</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Define qual componente será atualizado após ação ajax do componente modal.
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>tituloCaixa</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>Cria em uma linha o titulo com padrao da caixa e permite a inserção de botões também no padrão. </description>
+		<attribute>
+			<name>titulo</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Label que será exibida como titulo.
+			</description>
+		</attribute>
+	</tag>
+	
+    <tag>
+		<name>colunaVisualizarAlterarExcluir</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>Insere uma coluna contendo os botoes para "Visualizar", "Alterar" e botão para "Excluir"</description>
+	</tag>
+	
+	<tag>
+		<name>crudButtons</name>
+    	<tag-class />
+    	<body-content>empty</body-content>
+    	<description>
+    		Insere os Botoes "Novo", "Salvar ou Editar", "Cancelar" e "Remover" de acordo com o perfil do usuario logado.
+    	</description>
+	</tag>
+	
+	
+	<tag>
+		<name>titleHeader</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>
+			Cria um item de titulo de cabeçalho com label e descrição curta.
+		</description>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Título de página
+			</description>
+		</attribute>
+		<attribute>
+			<name>smallDescritption</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+			<description>
+				Pequena descrição informativa da pagina
+			</description>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>sairPaginaConfirm</name>
+		<tag-class/>
+		<body-content>empty</body-content>
+		<description>
+			Exibe uma tela de confirmação de saída da página caso algum campo tenha sido alterado.
+		</description>		
+	</tag>
+	
+	<tag>
+		<name>limpar</name>
+		<tag-class/>
+		<body-content>empty</body-content>
+		<description>
+			Exibe um botao para limpar os campos de pesquisa da tela.
+		</description>		
+	</tag>
+
+</taglib>

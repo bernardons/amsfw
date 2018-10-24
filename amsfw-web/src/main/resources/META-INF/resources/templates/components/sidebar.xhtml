@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+		<!-- Inicio sidebar -->
+		<div class="page-sidebar nav-collapse collapse">
+			<!-- Inicio SIDEBAR MENU --> 
+		      <ul>
+		        <li>
+		          <div class="sidebar-toggler hidden-phone"></div>
+		        </li>
+		        <li>
+		          <!-- Inicio pesquisa rápida -->
+		          <form class="sidebar-search" action="pages/demo/extra_search.xhtml">
+		            <div class="input-box">
+		              <a href="javascript:;" class="remove"></a>
+		              <input type="text" placeholder="#{menu.pesquisar}" /> 
+		              <input type="button" class="submit" value=" " />
+		            </div>
+		          </form>
+		          <!-- Fim pesquisa rápida  -->
+		        </li>
+		        <li class="start">
+		          <a href="#{request.contextPath}/index.xhtml">
+		          <i class="icon-home"></i> 
+		          <span class="title index">#{menu.home}</span>
+				  </a>
+		        </li>
+		        <li class="has-sub ">
+		          <a href="javascript:;">
+		          <i class="icon-table"></i> 
+		          <span class="title">#{menu.usuarios}</span>
+		          <span class="arrow "></span>
+		          </a>
+		          <ul class="sub">
+		          	<li class="componentes"><a href="#{request.contextPath}/componentes.xhtml">#{menu.componentes}</a></li>
+		            <li class="cadastro"><a href="#{request.contextPath}/pages/usuario/cadastro.xhtml">#{menu.cadastro}</a></li>
+		            <li class="pesquisa"><a href="#{request.contextPath}/pages/usuario/pesquisa.xhtml">#{menu.pesquisar}</a></li>
+		            <li><a href="#{request.contextPath}/alterarLocale.xhtml">Alterar Locale</a></li>
+		          </ul>
+		        </li>
+		        <li class="has-sub ">
+		          <a href="javascript:;">
+		          <i class="icon-table"></i> 
+		          <span class="title">#{menu['funcao.siico']}</span>
+		          <span class="arrow"></span>
+		          </a>
+		          <ul class="sub">
+		            <li class="cadastroFuncaoSiico pesquisaFuncaoSiico"><a href="#{request.contextPath}/pages/siico/pesquisaFuncaoSiico.xhtml">#{menu.pesquisar}</a></li>
+		          </ul>
+		        </li>
+		        <li class="has-sub ">
+		          <a href="javascript:;">
+		          <i class="icon-table"></i> 
+		          <span class="title">#{menu['registro.provisao']}</span>
+		          <span class="arrow"></span>
+		          </a>
+		          <ul class="sub">
+		            <li class="cadastroProvisao"><a href="#{request.contextPath}/pages/provisao/cadastroProvisao.xhtml">#{menu.cadastro}</a></li>
+		            <li class="pesquisaProvisao"><a href="#{request.contextPath}/pages/provisao/pesquisaProvisao.xhtml">#{menu.pesquisar}</a></li>
+		          </ul>
+		        </li>
+		        
+		        <c:if test="#{request.isUserInRole('usuario.pesquisar') or request.isUserInRole('papel.pesquisar') or request.isUserInRole('funcionalidade.pesquisar')}">
+			        <li class="has-sub ">
+			          <a href="javascript:;">
+			          <i class="icon-table"></i> 
+			          <span class="title">Segurança</span>
+			          <span class="arrow"></span>
+			          </a>
+			          <ul class="sub">
+			          	<c:if test="#{request.isUserInRole('usuario.pesquisar')}">
+			          	<li class="pesquisaUsuario cadastroUsuario"><a href="#{request.contextPath}/pages/seguranca/pesquisaUsuario.xhtml">Usuário</a></li>
+			          	</c:if>
+			          	<c:if test="#{request.isUserInRole('papel.pesquisar')}">
+			          	<li class="pesquisaPapel cadastroPapel"><a href="#{request.contextPath}/pages/seguranca/pesquisaPapel.xhtml">Papel</a></li>
+			          	</c:if>
+			          	<c:if test="#{request.isUserInRole('funcionalidade.pesquisar')}">
+			            <li class="pesquisaFuncionalidade cadastroFuncionalidade"><a href="#{request.contextPath}/pages/seguranca/pesquisaFuncionalidade.xhtml">Funcionalidade</a></li>
+			            </c:if>
+			          </ul>
+			        </li>
+		        </c:if>
+
+		      </ul>
+		      <!-- Fim SIDEBAR MENU -->
+		</div>
+		<!-- Fim SIDEBAR -->
+</html>

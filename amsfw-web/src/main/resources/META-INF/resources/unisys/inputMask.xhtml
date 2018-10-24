@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="input" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['input.default.required.message']}" />
+	<cc:attribute name="size" default="4" />
+	<cc:attribute name="readOnly" default="false" />
+	<cc:attribute name="onkeypress" default="false" />
+	<cc:attribute name="maxlenght" default="100" />
+	<cc:attribute name="mask" required="true"/>
+</cc:interface>
+
+<cc:implementation>
+	
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputMask mask="#{cc.attrs.mask}" id="#{cc.attrs.identificador}" value="#{cc.attrs.value}" onkeypress="#{cc.attrs.onkeypress}"
+				styleClass="m-wrap span span12" required="#{cc.attrs.required}" maxlength="#{cc.attrs.maxlenght}"
+				requiredMessage="#{cc.attrs.requiredMessage}" readonly="#{readOnly or cc.attrs.readOnly}" />
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>

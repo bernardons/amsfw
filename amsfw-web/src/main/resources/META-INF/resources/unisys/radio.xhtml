@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="options" required="true" />
+
+	<cc:attribute name="identificador" default="radio"/>
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['radio.default.required.message']}" />
+	<cc:attribute name="itemVazio" default="true" />
+	<cc:attribute name="labelItemVazio" default="#{componentes['radio.default.label.itemVazio']}" />
+	<cc:attribute name="itemLabel" default="label" />
+	<cc:attribute name="itemValue" default="chave" />
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<h:selectOneRadio id="#{cc.attrs.identificador}" value="#{cc.attrs.value}" readonly="#{readOnly}">
+		    	<f:selectItems value="#{cc.attrs.options}" var="atual" itemLabel="#{atual[cc.attrs.itemLabel]}" itemValue="#{atual[cc.attrs.itemValue]}" />  
+			</h:selectOneRadio>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>

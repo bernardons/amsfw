@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="arquivo"/>
+	<cc:attribute name="label" default="#{componentes['arquivo.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['arquivo.default.required.message']}" />
+</cc:interface>
+
+<cc:implementation>
+	<div class="span6 ">
+		<div class="control-group">
+			<h:outputLabel class="control-label" for="#{cc.attrs.identificador}">#{cc.attrs.label}</h:outputLabel>
+			<div class="controls">
+               <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <div class="input-append">
+                     <div class="uneditable-input">
+                        <i class="icon-file fileupload-exists"></i> 
+                        <span class="fileupload-preview"></span>
+                     </div>
+                     <span class="btn btn-file">
+                     <span class="fileupload-new">#{componentes['arquivo.selecione']}</span>
+                     <span class="fileupload-exists">#{componentes['arquivo.trocar']}</span>
+                     <p:fileUpload id="#{cc.attrs.identificador}" value="#{cc.attrs.value}" mode="simple" required="#{cc.attrs.required}" requiredMessage="#{cc.attrs.requiredMessage}"/>
+                     </span>
+                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">#{componentes['arquivo.remover']}</a>
+                  </div>
+               </div>
+            </div>
+		</div>
+	</div>
+</cc:implementation>
+</html>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form id="formBreadcrumb">
+	<!-- Começa o page header -->
+	<div class="row-fluid">
+		<div class="span12">
+
+			<!-- Começa o customizador de estilo -->
+			<div class="color-panel hidden-phone">
+				<div class="color-mode-icons icon-color"></div>
+				<div class="color-mode-icons icon-color-close"></div>
+				<div class="color-mode">
+					<p>THEME COLOR</p>
+					<ul class="inline">
+						<li class="color-unisys current" data-style="unisys"></li>
+						<li class="color-unisys current" data-style="unisys"></li>
+						<li class="color-black color-default" data-style="default"></li>
+						<li class="color-blue" data-style="blue"></li>
+						<li class="color-brown" data-style="brown"></li>
+						<li class="color-purple" data-style="purple"></li>
+						<li class="color-white color-light" data-style="light"></li>
+					</ul>
+					<label class="hidden-phone"> <input type="checkbox"
+						class="header" checked="checked" value="" /> <span
+						class="color-mode-label">Fixed Header</span>
+					</label>
+				</div>
+			</div>
+			<!-- Termina o customizador de estilo -->
+
+			<!-- Começa o titulo e breadcrumb -->
+			<h3 class="page-title">
+				<ui:insert name="titulo" />
+				<small><ui:insert name="resumo" /></small>
+			</h3>
+			<ul class="breadcrumb">
+				<li><i class="icon-home"></i> <a href="index.xhtml">Principal</a>
+					<i class="icon-angle-right"></i></li>
+				<ui:insert name="breadcrumb" />
+			</ul>
+			<!-- Termina o titulo e breadcrumb -->
+		</div>
+	</div>
+</h:form>
+</html>

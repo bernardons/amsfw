@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="id" default="picklist" />
+	<cc:attribute name="value" required="true" />	
+	<cc:attribute name="itemLabel" required="true" />	
+	<cc:attribute name="addLabel" default="Adicionar"/>
+	<cc:attribute name="removeLabel" default="Remover"/>
+	<cc:attribute name="labelListaPadrao" required="false" />
+	<cc:attribute name="labelListaSecundaria" required="false" />
+</cc:interface>
+
+<cc:implementation>
+	<p:pickList id="#{cc.attrs.id}" value="#{cc.attrs.value}" converter="br.unisys.EntityConverter"
+		var="atual" itemLabel="#{atual[cc.attrs.itemLabel]}" removeLabel="#{cc.attrs.removeLabel}"
+		itemValue="#{atual}" addLabel="#{cc.attrs.addLabel}">
+		<f:facet name="sourceCaption">#{cc.attrs.labelListaPadrao}</f:facet>  
+      		<f:facet name="targetCaption">#{cc.attrs.labelListaSecundaria}</f:facet>
+		</p:pickList>
+	<br />	
+</cc:implementation>
+</html>
