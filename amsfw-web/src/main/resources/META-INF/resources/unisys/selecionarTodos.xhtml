@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="bean" required="true" />
+	<cc:attribute name="methodDesmarcar" default="desmarcarMarcarTodos"/>
+</cc:interface>
+
+<cc:implementation>
+
+	<p:selectBooleanCheckbox id="selecionarTodosDataTable"
+		value="#{cc.attrs.bean['selecionados']}"
+		onchange="onChangeCheck(id)">
+		<p:ajax event="change"
+			listener="#{cc.attrs.bean[cc.attrs.methodDesmarcar]}"></p:ajax>
+	</p:selectBooleanCheckbox>
+	
+
+</cc:implementation>
+</html>
