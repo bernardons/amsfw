@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="nomeBotaoNovo" default="#{global.cadastrar}" />
+	<cc:attribute name="labelPesquisarPor" default="#{global['pesquisar.por.nome']}" />
+	<cc:attribute name="atributoDePesquisa" required="true"/>
+	<cc:attribute name="paginaCadastro" default="cadastro.xhtml"/>	
+	<cc:attribute name="update" />
+	<cc:attribute name="removerSelecionados" default="true" />
+</cc:interface>
+
+<style>
+	.ui-widget {
+		margin-bottom: 5px;
+	}
+</style>
+<cc:implementation>
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="btn-group ">
+				<cc:insertChildren />
+			</div>
+			<p:spacer width="10px" />	
+			<div class="btn-group" style="margin-bottom: 0px;">		
+				<button class="btn red dropdown-toggle" data-toggle="dropdown">#{global.acoes} <i class="icon-angle-down"></i>
+				</button>
+				<ul class="dropdown-menu">
+					<c:if test="#{cc.attrs.removerSelecionados}">
+						<li><p:commandLink
+								action="#{controller.removerTodosSelecionados}"
+								value="#{global['remover.selecionados']}" update="@([id$=dataTableObjetos])"/></li>
+					</c:if>
+
+				</ul>
+			</div>	
+		</div>	
+
+		<div class="span6" style="text-align: right;">
+			<div id="sample_2_filter" class="dataTables_filter">
+				<label>
+					#{cc.attrs.labelPesquisarPor}
+					<p:inputText
+						id="nomeFiltroSimples"						
+						value="#{cc.attrs.atributoDePesquisa}"
+						styleClass="m-wrap small">
+						<p:ajax event="keyup" update="#{cc.attrs.update}" />
+					</p:inputText>
+				</label>
+			</div>
+		</div>
+	</div>
+</cc:implementation>
+</html>
