@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"	
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="textArea"/>
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="size" default="6" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="fakeRequired" default="false" />
+	<cc:attribute name="readOnly" default="false" />
+	<cc:attribute name="requiredMessage"
+		default="#{componentes['default.required.message']}" />
+	<cc:attribute name="rows" default="4" />	
+	<cc:attribute name="maxlength"  required="false"/>
+	
+</cc:interface>
+
+<cc:implementation>
+	
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+	<ui:param name="fakeRequired" value="#{cc.attrs.fakeRequired}" />	
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputTextarea id="#{cc.attrs.identificador}" value="#{cc.attrs.value}" maxlength="#{cc.attrs.maxlength}" styleClass="m-wrap span12"  autoResize="false" readonly="#{readOnly or cc.attrs.readOnly}" 
+								required="#{cc.attrs.required}" requiredMessage="#{cc.attrs.requiredMessage}" rows="#{cc.attrs.rows}"/>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>

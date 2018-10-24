@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:u="http://com.unisys.br/awsfw"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+	<composite:interface>
+		<composite:attribute name="controller" required="true"/>
+		<composite:attribute name="buttonYesValue" default="#{global.sim}" />
+		<composite:attribute name="buttonNoValue" default="#{global.nao}" />
+	</composite:interface>
+	
+		
+	<composite:implementation>
+
+		<p:confirmDialog widgetVar="dialogVoltar" styleClass="modal-unisys modal-voltar hide fade in">
+
+			<f:facet name="header">				
+				<h4>
+					<i class="icon-warning-sign" style="margin-right: 10px;"></i>
+					Voltar					
+				</h4>
+			</f:facet>
+			
+			<f:facet name="message">				
+				<h:panelGroup id="panelmessage" layout="block">
+					#{global['mensagem.ao.sair']}
+				</h:panelGroup>
+			</f:facet>
+
+			<br/>
+			<div style="float: right">
+				<p:commandLink 
+					value="#{cc.attrs.buttonYesValue}"
+					oncomplete="dialogVoltar.hide()"
+					action="#{controller['telaPesquisa'].concat('?faces-redirect=true')}"
+					styleClass="btn btn-blue" 
+					immediate="true" 
+					process="@this" 
+					style="margin-left: 14px">					
+				</p:commandLink>
+				<p:commandLink 
+					value="#{cc.attrs.buttonNoValue}"  
+					styleClass="btn btn-orange" 
+					onclick="dialogVoltar.hide()" 
+					style="margin-left: 5px"
+					immediate="true" />
+			</div>
+
+		</p:confirmDialog>		
+	</composite:implementation>
+</ui:composition>
