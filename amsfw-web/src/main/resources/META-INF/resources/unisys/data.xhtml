@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="data" />
+	<cc:attribute name="label" default="#{componentes['data.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+	<cc:attribute name="size" default="2" />
+	<cc:attribute name="inputSize" default="7" />
+	<cc:attribute name="readOnly" default="false" />
+</cc:interface>
+
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+	
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputText id="#{cc.attrs.identificador}" name="#{cc.attrs.value}" 
+				styleClass="m-wrap m-ctrl-medium span#{cc.attrs.inputSize} #{readOnly or cc.attrs.readOnly ? 'date-picker-disabled' : 'date-picker'}"
+				required="#{cc.attrs.required}" onchange="is_dirty = true"
+				requiredMessage="#{cc.attrs.requiredMessage}" onkeypress="mask(this, '99/99/9999', 1, this);" onkeydown="return validarAno(this);" onkeyup="mask(this, '99/99/9999', 1, this);" 
+				value="#{cc.attrs.value}" readonly="#{readOnly or cc.attrs.readOnly}">			
+				<f:converter converterId="br.unisys.DateConverter"></f:converter>		
+			</p:inputText>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+	
+	<script type="text/javascript">	
+		$(document).ready(function() {
+			$('.date-picker').datepicker({
+				format: 'dd/mm/yyyy',
+				minDate: null,
+			    maxDate: null
+			});
+		});
+	</script>
+	
+</cc:implementation>
+</html>
