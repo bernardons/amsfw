@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="cnpj"/>
+
+	<cc:attribute name="label" default="#{componentes['cnpj.default.nome']}" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" required="true"/>
+	<cc:attribute name="requiredMessage" default="#{componentes['default.required.message']}" />
+	<cc:attribute name="validatorMessage" default="#{componentes['cnpj.default.validator.message']}" />
+	<cc:attribute name="size" default="2" />
+	<cc:attribute name="inputSize" default="12" />
+	<cc:attribute name="readonly" default="#{not controller['readonly']}"/>
+
+</cc:interface>
+<cc:implementation>
+
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<p:inputMask id="#{cc.attrs.identificador}"
+				required="#{cc.attrs.required}" value="#{cc.attrs.value}"
+				maxlength="#{cc.attrs.maxlenght}" styleClass="m-wrap span#{cc.attrs.inputSize}"
+				requiredMessage="#{cc.attrs.requiredMessage}"
+				validatorMessage="#{cc.attrs.validatorMessage}"
+				mask="99.999.999/9999-99"
+				converter="br.unisys.CnpjConverter" readonly="#{cc.attrs.readonly}" >
+				<f:validator validatorId="validator.CnpjValidator" />
+			</p:inputMask>
+			<p:message for="#{cc.attrs.identificador}" />
+		</ui:define>
+	</ui:decorate>
+</cc:implementation>
+</html>
