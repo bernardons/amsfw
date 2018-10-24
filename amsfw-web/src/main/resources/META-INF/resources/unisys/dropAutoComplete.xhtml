@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="autoComplete" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="bean" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="fakeRequired" default="false" />
+	<cc:attribute name="requiredMessage"
+		default="#{componentes['default.required.message']}" />
+	<cc:attribute name="update" />
+	<cc:attribute name="method" required="true" />
+	<cc:attribute name="itemLabel" required="true" />
+	<cc:attribute name="blur" default="true" />
+	<cc:attribute name="ajaxAutoc" default="false" />
+	<cc:attribute name="readOnly" default="false" />
+	<cc:attribute name="beanAjax" />
+	<cc:attribute name="methodAjax" />
+	<cc:attribute name="updateAutoc" />
+	<cc:attribute name="minQueryLength" default="3" />
+	<cc:attribute name="maxLength" default="40" />
+	<cc:attribute name="size" default="4" />
+	<cc:attribute name="sizeInput" default="12" />
+	<cc:attribute name="inputHiddenValue" required="true" />
+	<cc:attribute name="idInputHidden" required="false"
+		default="#{cc.attrs.identificador}_inputHidden" />
+</cc:interface>
+
+<cc:implementation>
+	<!-- Adicionar este atributos para utilizar no template  -->
+	<ui:param name="required" value="#{cc.attrs.required}" />
+	<ui:param name="fakeRequired" value="#{cc.attrs.fakeRequired}" />
+	
+	<ui:decorate template="template/basicInput.xhtml">
+		<ui:define name="content">
+			<div class="button_drop_content">
+				<p:autoComplete id="#{cc.attrs.identificador}"
+					minQueryLength="#{cc.attrs.minQueryLength}"
+					value="#{cc.attrs.value}" maxlength="#{cc.attrs.maxLength}"
+					dropdown="true" converter="br.unisys.EntityConverter"
+					styleClass="span#{cc.attrs.sizeInput} button_drop"
+					completeMethod="#{cc.attrs.bean[cc.attrs.method]}" var="atual"
+					maxResults="15" itemLabel="#{atual[cc.attrs.itemLabel]}"
+					itemValue="#{atual}" readonly="#{cc.attrs.readOnly}"
+					onblur="transferirValorInputs('#{cc.attrs.idInputHidden}', this.value)">
+					<c:if test="#{cc.attrs.ajaxAutoc}">
+						<c:if test="#{cc.attrs.blur}">
+							<p:ajax event="blur"
+								listener="#{cc.attrs.beanAjax[cc.attrs.methodAjax]}"
+								process="#{cc.attrs.identificador}_inputHidden"
+								update="#{utilController.getIdFormatado(cc.attrs.updateAutoc)}"></p:ajax>
+						</c:if>
+	
+						<p:ajax event="itemSelect"
+							listener="#{cc.attrs.beanAjax[cc.attrs.methodAjax]}"
+							update="#{utilController.getIdFormatado(cc.attrs.updateAutoc)}"></p:ajax>
+					</c:if>
+				</p:autoComplete>
+				<p:message for="#{cc.attrs.identificador}_inputHidden" />
+				<h:inputText id="#{cc.attrs.identificador}_inputHidden"
+					value="#{cc.attrs.inputHiddenValue}"
+					required="#{cc.attrs.value == null and cc.attrs.inputHiddenValue == null and cc.attrs.required}"
+					requiredMessage="#{cc.attrs.requiredMessage}"
+					style="visibility: hidden;padding: 0px; height: 0px; width: 0px; float: right;" />
+			</div>
+		</ui:define>		
+	</ui:decorate>
+		
+	<style>
+		
+		.button_drop_content{
+		position: relative;
+		}
+		.button_drop button {
+			position: absolute;
+			    right: -1px;	
+			background: rgba(128, 128, 128, 0.26) !important;
+		}
+		
+		.button_drop_content input[type=text]::-ms-clear { display: none; }
+		
+		.button_drop span {
+			font-weight: bold;
+			font-size: 1.27em;
+		}
+		
+		.button_drop .ui-button .ui-icon {
+			background: url("../../caixa/imagem/sort_desc.gif") -2px -4px !important;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			var identificador = '#{cc.attrs.identificador}';
+			var autocomplete = document.getElementById($("input[id$='" + identificador + "_input']").attr('id'));
+			var value = autocomplete.value;
+			
+			if(value == null || value == ""){
+				var valueInputHidden = document.getElementById($("input[id$='" + '#{cc.attrs.idInputHidden}' + "']").attr('id')).value;
+				autocomplete.value = valueInputHidden;
+			}
+			
+
+			
+		});
+
+	</script>
+
+
+
+</cc:implementation>
+</html>
