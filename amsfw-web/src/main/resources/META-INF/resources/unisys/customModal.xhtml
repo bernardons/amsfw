@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:u="http://com.unisys.br/awsfw"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+	<composite:interface>
+		<composite:attribute name="widgetVar" />
+		<composite:attribute name="header" required="true"/>
+		<composite:attribute name="panelmessage" default="panelmessage" />
+		<composite:attribute name="message" required="true"/>
+		<composite:attribute name="bean" />
+		<composite:attribute name="method" />
+		<composite:attribute name="update" />
+		<composite:attribute name="buttonYesValue" default="#{componentes['customModal.default.confirma']}" />
+		<composite:attribute name="buttonNoValue" default="#{componentes['customModal.default.cancelar']}" />
+	</composite:interface>
+	
+		
+	<composite:implementation>
+
+		<p:confirmDialog widgetVar="#{cc.attrs.widgetVar}"
+			styleClass="modal-unisys modal hide fade in">
+
+			<f:facet name="header">				
+				<h4>
+					<i class="icon-warning-sign" style="margin-right: 10px;"></i>
+					#{cc.attrs.header}					
+				</h4>
+			</f:facet>
+			
+			<f:facet name="message">				
+				<h:panelGroup id="#{cc.attrs.panelmessage}" layout="block">
+					#{cc.attrs.message} 
+				</h:panelGroup>
+			</f:facet>
+
+			<br/>
+			<div style="float: right">
+				<p:commandLink value="#{cc.attrs.buttonYesValue}"					
+					actionListener="#{cc.attrs.bean[cc.attrs.method]}" rel="modalUnisys"
+					styleClass="btn blue" immediate="true" process="@this" style="margin-left: 14px" update="#{cc.attrs.update}">					
+				</p:commandLink>
+				<p:commandLink value="#{cc.attrs.buttonNoValue}"  
+					styleClass="btn" rel="modalUnisys" onclick="#{cc.attrs.widgetVar}.hide()"
+					style="margin-left: 5px" />
+			</div>
+
+		</p:confirmDialog>
+	</composite:implementation>
+</ui:composition>
