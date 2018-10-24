@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<cc:interface>
+
+	<cc:attribute name="action" required="false" />
+	<cc:attribute name="identificador" default="itemMenu" />
+	<cc:attribute name="immediate" default="true" />
+	<cc:attribute name="ajax" default="false" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="labelPrimeiroNivel" required="false" />
+
+</cc:interface>
+
+<cc:implementation>
+	<h:panelGroup rendered="#{cc.attrs.rendered}">
+
+		<li class="#{cc.attrs.sytleClass}"><c:choose>
+
+				<c:when test="#{cc.attrs.page == null || cc.attrs.page == ''}">
+					<p:outputLabel value="#{cc.attrs.label}" id="#{cc.attrs.identificador}"
+						styleClass="#{cc.attrs.styleClass}">
+
+						<c:if test="#{!cc.attrs.labelPrimeiroNivel eq null}">
+							<f:setPropertyActionListener target="#{menuController.menu}"
+								value="#{cc.attrs.labelPrimeiroNivel}" />
+						</c:if>
+
+					</p:outputLabel>
+				</c:when>
+
+				<c:otherwise>
+
+					<p:commandLink 
+						styleClass="#{cc.attrs.styleClass}"  id="#{cc.attrs.identificador}"
+						action="#{menuController[cc.attrs.page]}"
+						immediate="#{cc.attrs.immediate}" ajax="#{cc.attrs.ajax}"
+						value="#{cc.attrs.label}">
+
+						<c:if test="#{!cc.attrs.labelPrimeiroNivel eq null}">
+							<f:setPropertyActionListener target="#{menuController.menu}"
+								value="#{cc.attrs.labelPrimeiroNivel}" />
+						</c:if>
+
+					</p:commandLink>
+
+				</c:otherwise>
+			</c:choose> 
+			
+			<cc:insertChildren />
+			
+		</li>
+	</h:panelGroup>
+
+</cc:implementation>
+</html>
