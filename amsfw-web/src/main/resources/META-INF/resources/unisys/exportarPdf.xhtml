@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+</cc:interface>
+
+<cc:implementation>
+	<p:commandLink styleClass="btn btn-orange noCheck"
+		value="#{global['exportar.relatorio']}"
+		update="@([id$='formPesquisa'])"
+		actionListener="#{controller.pesquisar}" ajax="false">
+		<f:param name="formatoRelatorio" value="PDF" />
+	</p:commandLink>
+</cc:implementation>
+</html>
