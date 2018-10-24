@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>amsfw-ws-client</artifactId>
+	<name>AMS Framework WS Client</name>
+
+	<parent>
+		<groupId>com.unisys.br.amsfw</groupId>
+		<version>1.0.37</version>
+		<artifactId>amsfw-parent</artifactId>
+	</parent>
+
+	<properties>
+		<!-- Servicos disponíveis no JBOSS -->
+		<processamento.wslocation>http://localhost:8080/amsfw-ws-1.0.0-SNAPSHOT/ProcessamentoWS?wsdl</processamento.wslocation>
+		<wsdlDirectory>${basedir}/src/main/resources/META-INF/wsdl</wsdlDirectory>
+	</properties>
+
+	<dependencies>
+		<!-- 
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.5.3</version>
+		</dependency>
+		 -->
+	</dependencies>
+
+	<!-- 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jax-ws-commons</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>processamento-ws</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlDirectory>${wsdlDirectory}</wsdlDirectory>
+							<wsdlFiles>
+								<wsdlFile>ProcessamentoWS.wsdl</wsdlFile>
+							</wsdlFiles>
+							<wsdlLocation>${processamento.wslocation}</wsdlLocation>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jvnet.jax-ws-commons</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>2.1</version>
+					<executions>
+						<execution>
+							<configuration>
+								<xadditionalHeaders>true</xadditionalHeaders>
+								<xnocompile>true</xnocompile>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+	 -->
+
+</project>
