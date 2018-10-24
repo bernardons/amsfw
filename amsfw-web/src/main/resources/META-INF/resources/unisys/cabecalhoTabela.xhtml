@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="nome" required="true" />
+	<cc:attribute name="hide" default="false" />
+</cc:interface>
+
+<cc:implementation>
+	<div class="portlet-title">
+		<div class="row-fluid">
+			<div class="span6">
+				<h4><i class="icon-reorder"></i>#{cc.attrs.nome}</h4>
+			</div>
+			<div class="span6">
+				<div class="tools">
+					<a class="#{cc.attrs.hide eq true ? 'expand' : 'collapse'}" href="javascript:;" ></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</cc:implementation>
+</html>
