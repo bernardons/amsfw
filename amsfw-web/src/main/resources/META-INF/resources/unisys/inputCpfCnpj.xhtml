@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<cc:interface>
+	<cc:attribute name="identificador" default="input" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage"
+		default="#{componentes['default.required.message']}" />
+	<cc:attribute name="readOnly" default="false" />
+	<cc:attribute name="size" default="3" />
+	<cc:attribute name="inputSize" default="12" />
+</cc:interface>
+
+<cc:implementation>
+
+	<div class="span#{cc.attrs.size}" style="margin-top: -3px"
+		id="#{cc.attrs.identificador}_span">
+		<div class="control-group">
+			<h:panelGrid columns="4"
+				style="background-color: transparent !important">
+				<input id="radioMascaraCpf" type="radio" value="CPF" name="tipo"
+					checked="checked" />
+				<b><h:outputText value="CPF"
+						style="font-weight: bold !important;" /></b>
+				<input id="radioMascaraCnpj" type="radio" value="CNPJ" name="tipo" />
+				<b><h:outputText value="CNPJ"
+						style="font-weight: bold !important;" /></b>
+			</h:panelGrid>
+			<div class="controls">
+				<h:inputText value="#{cc.attrs.value}"
+					id="#{cc.attrs.identificador}"
+					styleClass="m-wrap span#{cc.attrs.inputSize}"
+					disabled="#{cc.attrs.readOnly or readOnly}" />
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	function mascara(){
+			var input = $("input[id$='#{cc.attrs.identificador}']");
+			var value = $(input).val().replace(".","").replace(".","").replace(".","").replace("-","").replace("/","").length;
+			if(value == 14){
+				$("#radioMascaraCnpj").attr("checked","checked");
+				$(input).mask("99.999.999/9999-99");
+			}else{
+				$("#radioMascaraCpf").attr("checked","checked");
+				$(input).mask("999.999.999-99");
+			}
+			if($("input[id$='radioMascaraCpf']").is(":checked")){
+				$(input).mask("999.999.999-99"); 
+			}else{
+				$(input).mask("99.999.999/9999-99");
+			}
+			$("#radioMascaraCpf").click(function(){
+				$(input).val("");
+				$(input).mask("999.999.999-99");
+			})
+			$("#radioMascaraCnpj").click(function(){
+				$(input).val("");
+				$(input).mask("99.999.999/9999-99");
+			})
+		}
+		$(document).ready(function(){
+			mascara();
+		});
+	</script>
+</cc:implementation>
+
+
+</html>
