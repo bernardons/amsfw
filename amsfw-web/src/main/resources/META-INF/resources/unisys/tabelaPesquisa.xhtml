@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:u="http://com.unisys.br/awsfw">
+
+<cc:interface>
+	<cc:attribute name="nome" default="Tabela" />
+	<cc:attribute name="var" default="objeto" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="modoSelecao" default="true" />
+	<cc:attribute name="atributoPesquisa" required="true" />
+	<cc:attribute name="itemSelecionado" required="true" />
+</cc:interface>
+
+<cc:implementation>
+
+	<div class="portlet box ash" id="formularioPesquisaDataTable">
+		
+		<u:cabecalhoTabela nome="#{cc.attrs.nome}" />
+		
+		<div class="portlet-body" id="display">
+			<u:pesquisarNovo update="@([id$=dataTableObjetos])"	atributoDePesquisa="#{cc.attrs.atributoPesquisa}"> 
+				<p:commandLink styleClass="btn green" action="#{controller['telaCadastro'].concat('?faces-redirect=true')}" immediate="true" rendered="#{request.isUserInRole(funcionalidade.concat('.alterar'))}">
+					#{global.cadastrar}
+					<i class="icon-plus"></i>
+				</p:commandLink>
+			</u:pesquisarNovo>
+
+			<p:dataTable tableStyleClass="table table-striped table-hover table-bordered" var="objeto" value="#{cc.attrs.value}" rowKey="#{objeto.id}" paginator="true" rows="10"  
+       			paginatorTemplate="Ir para página: {PageLinks} &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Itens por página: {RowsPerPageDropdown} &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {CurrentPageReport}"
+       			id="dataTableObjetos" lazy="true" rowStyleClass="#{data.id mod 2 == 0 ? 'odd' : 'even'}" rowsPerPageTemplate="5,10,15" paginatorPosition="bottom" paginatorAlwaysVisible="false">
+
+				<c:if test="#{cc.attrs.modoSelecao}">
+					<p:column style="width:2%">
+						<f:facet name="header">
+							<u:selecionarTodos bean="#{controller}" />
+						</f:facet>
+						<u:dataTableSelection bean="#{controller}" />
+					</p:column>
+				</c:if>
+
+				<cc:insertChildren />
+
+			</p:dataTable>
+		</div>
+		
+		<u:removerModal />
+		
+		<div id="mascara"></div>
+
+	</div>
+</cc:implementation>
+</html>
